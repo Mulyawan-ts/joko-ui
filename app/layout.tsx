@@ -16,6 +16,28 @@ export const metadata: Metadata = {
   description:
     "Free, open-source Tailwind CSS components. Copy-paste ready components to build beautiful, responsive websites faster. No installation required.",
   keywords: ["tailwind css", "components", "ui library", "free", "open source"],
+  openGraph: {
+    title: "Joko UI - Free Tailwind CSS Components",
+    description: "Free, open-source Tailwind CSS components. Copy-paste ready components to build beautiful, responsive websites faster.",
+    url: "https://joko-ui.com",
+    siteName: "Joko UI",
+    images: [
+      {
+        url: "/joko-ui.webp",
+        width: 1200,
+        height: 630,
+        alt: "Joko UI - Free Tailwind CSS Components",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Joko UI - Free Tailwind CSS Components",
+    description: "Free, open-source Tailwind CSS components. Copy-paste ready components to build beautiful, responsive websites faster.",
+    images: ["/joko-ui.webp"],
+  },
 };
 
 export default function RootLayout({
