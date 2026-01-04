@@ -11,7 +11,10 @@ const poppins = Poppins({
   weight: ["300", "400", "500", "600", "700", "800"],
 });
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'
+
 export const metadata: Metadata = {
+  metadataBase: new URL(baseUrl),
   title: "Joko UI - Free Tailwind CSS Components",
   description:
     "Free, open-source Tailwind CSS components. Copy-paste ready components to build beautiful, responsive websites faster. No installation required.",
@@ -19,7 +22,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Joko UI - Free Tailwind CSS Components",
     description: "Free, open-source Tailwind CSS components. Copy-paste ready components to build beautiful, responsive websites faster.",
-    url: "https://joko-ui.com",
+    url: baseUrl,
     siteName: "Joko UI",
     images: [
       {
