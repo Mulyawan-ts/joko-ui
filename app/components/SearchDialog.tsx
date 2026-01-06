@@ -58,13 +58,11 @@ export default function ComponentDialog({ isOpen, onClose }: ComponentDialogProp
         className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[9998] transition-opacity duration-300"
         onClick={onClose}
         aria-hidden="true"
-        style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}
       />
 
       {/* Dialog */}
       <div 
         className="fixed inset-0 z-[9999] flex items-center justify-center p-4"
-        style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}
       >
         <div 
           className="bg-white dark:bg-gray-800 w-full max-w-4xl max-h-[85vh] flex flex-col overflow-hidden rounded-xl shadow-lg animate-in fade-in zoom-in-95 duration-300"
