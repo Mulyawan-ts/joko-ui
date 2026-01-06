@@ -134,7 +134,7 @@ export default function Home() {
               <div className="grid gap-4">
                 <ComponentCard
                   title="Buttons"
-                  count={6}
+                  count={10}
                   icon={<IconToggleRight stroke={1.5} />}
                   href="/components/application/buttons"
                   description="Various button styles and states"
