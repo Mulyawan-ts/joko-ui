@@ -790,14 +790,14 @@ export const marketingComponents: ComponentType[] = [
     ],
   },
   {
-    slug: 'accordion',
-    name: 'Accordion',
+    slug: 'faq',
+    name: 'FAQ',
     icon: <IconLineHeight stroke={1.5} />,
-    description: 'Accordion for showing additional information.',
+    description: 'FAQs for showing additional information.',
     variants: [
       {
-        id: 'accordion-simple',
-        name: 'Simple Accordion',
+        id: 'faq-simple',
+        name: 'Simple FAQs',
         code: `<div class="max-w-full sm:max-w-xl md:max-w-2xl lg:max-w-3xl mx-auto space-y-3 md:space-y-4">
 
   <!-- Header Section -->
