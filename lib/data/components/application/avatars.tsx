@@ -4,19 +4,8 @@ import { ComponentType } from '../types';
 export const avatars: ComponentType = {
   slug: 'avatars',
   name: 'Avatars',
-<<<<<<< HEAD
-  icon: <IconUserCircle stroke={ 1.5} />,
-  description: 'Avatar components for user profiles',
-  pagination: {
-    enabled: true,
-    itemsPerPage: 5,
-    showPageNumbers: true,
-    showInfo: true
-  },
-=======
   icon: <IconUserCircle stroke={1.5} />,
   description: 'Avatar components for user profiles',
->>>>>>> upstream/development
   variants: [
     {
       id: 'avatar-sizes',

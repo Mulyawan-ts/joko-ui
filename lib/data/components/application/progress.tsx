@@ -4,19 +4,8 @@ import { ComponentType } from '../types';
 export const progress: ComponentType = {
   slug: 'progress',
   name: 'Progress',
-<<<<<<< HEAD
-  icon: <IconLoader2 stroke={ 1.5} />,
-  description: 'Progress bar components to show task completion status',
-  pagination: {
-    enabled: true,
-    itemsPerPage: 5,
-    showPageNumbers: true,
-    showInfo: true
-  },
-=======
   icon: <IconLoader2 stroke={1.5} />,
   description: 'Progress bar components to show task completion status',
->>>>>>> upstream/development
   variants: [
     {
       id: 'progress-basic',

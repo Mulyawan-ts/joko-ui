@@ -4,19 +4,8 @@ import { ComponentType } from '../types';
 export const badges: ComponentType = {
   slug: 'badges',
   name: 'Badges',
-<<<<<<< HEAD
-  icon: <IconTag stroke={ 1.5} />,
-  description: 'Badge and tag components for labels and status',
-  pagination: {
-    enabled: true,
-    itemsPerPage: 5,
-    showPageNumbers: true,
-    showInfo: true
-  },
-=======
   icon: <IconTag stroke={1.5} />,
   description: 'Badge and tag components for labels and status',
->>>>>>> upstream/development
   variants: [
     {
       id: 'badge-solid',

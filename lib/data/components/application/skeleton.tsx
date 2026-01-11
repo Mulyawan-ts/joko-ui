@@ -4,19 +4,8 @@ import { ComponentType } from '../types';
 export const skeleton: ComponentType = {
   slug: 'skeleton',
   name: 'Skeleton',
-<<<<<<< HEAD
-  icon: <IconLoader3 stroke={ 1.5} />,
-  description: 'Ghostly loading placeholders for content',
-  pagination: {
-    enabled: true,
-    itemsPerPage: 5,
-    showPageNumbers: true,
-    showInfo: true
-  },
-=======
   icon: <IconLoader3 stroke={1.5} />,
   description: 'Ghostly loading placeholders for content',
->>>>>>> upstream/development
   variants: [
     {
       id: 'skeleton-basic',

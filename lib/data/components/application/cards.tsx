@@ -60,6 +60,7 @@ description: 'Versatile card components for displaying content',
     <button class="hover:bg-neutral-200 bg-neutral-50 rounded text-neutral-800 font-extrabold w-full p-3">See more</button>
   </div>
 </div>`,
+      contributor:'azmil72',
     },
     {
       id: 'card-neon-glow',
@@ -74,6 +75,7 @@ description: 'Versatile card components for displaying content',
     <button class="mt-4 px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg font-semibold hover:from-purple-700 hover:to-pink-700 transition-all duration-300 shadow-lg hover:shadow-purple-500/25">Explore</button>
   </div>
 </div>`,
+      contributor:'azmil72',
     },
     {
       id: 'card-particle-effect',
@@ -94,6 +96,7 @@ description: 'Versatile card components for displaying content',
     <button class="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-blue-500/25 group-hover:scale-105">Launch</button>
   </div>
 </div>`,
+      contributor:'azmil72',
     },
     {
       id: 'card-liquid-effect',
@@ -111,7 +114,7 @@ description: 'Versatile card components for displaying content',
     <button class="mt-4 px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-xl font-semibold hover:from-pink-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-purple-500/25 group-hover:scale-105">Experience</button>
   </div>
 </div>`,
-      contributor: 'rayasabari',
+      contributor: 'azmil72',
     },
   ],
 };

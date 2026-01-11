@@ -4,19 +4,8 @@ import { ComponentType } from '../types';
 export const forms: ComponentType = {
   slug: 'forms',
   name: 'Forms',
-<<<<<<< HEAD
-  icon: <IconForms stroke={ 1.5} />,
-  description: 'Form input components with modern styling',
-  pagination: {
-    enabled: true,
-    itemsPerPage: 5,
-    showPageNumbers: true,
-    showInfo: true
-  },
-=======
   icon: <IconForms stroke={1.5} />,
   description: 'Form input components with modern styling',
->>>>>>> upstream/development
   variants: [
     {
       id: 'input-basic',
