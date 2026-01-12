@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTheme } from './ThemeProvider';
 import Logo from './Logo';
 import SearchDialog from './SearchDialog';
@@ -10,6 +10,13 @@ export default function Header() {
   const { theme, toggleTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const renderTheme = mounted ? theme : 'light';
 
   return (
     <header className="sticky top-0 z-50 glass border-b border-border backdrop-blur-md">
@@ -68,7 +75,7 @@ export default function Header() {
               className="p-2 rounded-xl glass-button"
               aria-label="Toggle theme"
             >
-              {theme === 'light' ? (
+              {renderTheme === 'light' ? (
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
                     strokeLinecap="round"
