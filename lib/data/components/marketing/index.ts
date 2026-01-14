@@ -7,6 +7,7 @@ import { testimonials } from './testimonials';
 import { faq } from './faq';
 import { stats } from './stats';
 import { teams } from './teams';
+import { banners } from './banners';
 
 export const marketingComponents: ComponentType[] = [
   heroes,
@@ -17,4 +18,5 @@ export const marketingComponents: ComponentType[] = [
   faq,
   stats,
   teams,
+  banners,
 ];
