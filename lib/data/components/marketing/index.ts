@@ -8,6 +8,7 @@ import { faq } from './faq';
 import { stats } from './stats';
 import { teams } from './teams';
 import { banners } from './banners';
+import { headers } from './headers';
 
 export const marketingComponents: ComponentType[] = [
   heroes,
@@ -19,4 +20,5 @@ export const marketingComponents: ComponentType[] = [
   stats,
   teams,
   banners,
+  headers,
 ];
