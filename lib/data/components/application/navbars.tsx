@@ -1,10 +1,10 @@
-import { IconAppWindow } from '@tabler/icons-react';
+import { IconLayoutNavbarInactive } from '@tabler/icons-react';
 import { ComponentType } from '../types';
 
 export const navbars: ComponentType = {
   slug: 'navbars',
   name: 'Navbars',
-  icon: <IconAppWindow stroke={1.5} />,
+  icon: <IconLayoutNavbarInactive stroke={1.5} />,
   description: 'Navigation bars that allow users to move through the application',
   variants: [
     {

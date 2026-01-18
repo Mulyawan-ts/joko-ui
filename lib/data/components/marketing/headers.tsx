@@ -1,10 +1,10 @@
-import { IconAppWindow } from '@tabler/icons-react';
+import { IconLayoutNavbar } from '@tabler/icons-react';
 import { ComponentType } from '../types';
 
 export const headers: ComponentType = {
   slug: 'headers',
   name: 'Headers',
-  icon: <IconAppWindow stroke={1.5} />,
+  icon: <IconLayoutNavbar stroke={1.5} />,
   description: 'Responsive navbar for marketing websites',
   variants: [
     {

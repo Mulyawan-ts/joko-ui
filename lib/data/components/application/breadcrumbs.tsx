@@ -1,24 +1,10 @@
-
+import { IconChevronsRight } from '@tabler/icons-react';
 import { ComponentType } from '../types';
 
 export const breadcrumbs: ComponentType = {
   slug: 'breadcrumbs',
   name: 'Breadcrumbs',
-  icon: (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <polyline points="9 18 15 12 9 6" />
-    </svg>
-  ),
+  icon: <IconChevronsRight stroke={1.5} />,
   description: 'Breadcrumbs help users understand their current location within a hierarchy.',
   variants: [
     {

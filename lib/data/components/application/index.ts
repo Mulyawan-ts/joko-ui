@@ -8,23 +8,21 @@ import { avatars } from './avatars';
 import { progress } from './progress';
 import { skeleton } from './skeleton';
 import { loaders } from './loaders';
-import { description_list } from './description-list';
 import { breadcrumbs } from './breadcrumbs';
 import { sidebars } from './sidebars';
 import { navbars } from './navbars';
 
 export const applicationComponents: ComponentType[] = [
+  navbars,
+  sidebars,
+  breadcrumbs,
+  avatars,
+  forms,
   buttons,
   cards,
-  alerts,
-  forms,
+  loaders,
   badges,
-  avatars,
+  alerts,
   progress,
   skeleton,
-  loaders,
-  description_list,
-  breadcrumbs,
-  sidebars,
-  navbars,
 ];
