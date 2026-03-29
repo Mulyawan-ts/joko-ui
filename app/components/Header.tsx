@@ -1,24 +1,33 @@
 'use client';
 
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState, useSyncExternalStore } from 'react';
 import { useTheme } from './ThemeProvider';
 import Logo from './Logo';
 import SearchDialog from './SearchDialog';
 import { usePathname } from 'next/navigation';
 
+// Hook to detect if we're on client side (fixes hydration mismatch)
+function useIsClient() {
+  return useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false
+  );
+}
+
 export default function Header() {
   const { theme, toggleTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
+  const isClient = useIsClient();
   const pathname = usePathname();
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const renderTheme = mounted ? theme : 'light';
+  // Handle mobile menu and dialog together
+  const handleSearchOpen = () => {
+    setIsDialogOpen(true);
+    setIsMenuOpen(false);
+  };
 
   const isActive = (path: string) => {
     return pathname?.startsWith(path);
@@ -28,8 +37,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 glass border-b border-border backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-
-          <div className='flex items-center gap-10'>
+          <div className="flex items-center gap-10">
             {/* Logo */}
             <Logo />
 
@@ -38,7 +46,7 @@ export default function Header() {
               <Link
                 href="/components/application"
                 className={`transition-colors font-medium ${
-                  isActive('/components/application')
+                  isClient && isActive('/components/application')
                     ? 'text-foreground'
                     : 'text-muted-foreground hover:text-foreground'
                 }`}
@@ -47,8 +55,8 @@ export default function Header() {
               </Link>
               <Link
                 href="/components/marketing"
-                 className={`transition-colors font-medium ${
-                  isActive('/components/marketing')
+                className={`transition-colors font-medium ${
+                  isClient && isActive('/components/marketing')
                     ? 'text-foreground'
                     : 'text-muted-foreground hover:text-foreground'
                 }`}
@@ -58,14 +66,13 @@ export default function Header() {
             </nav>
           </div>
 
-
-
           {/* Search & Actions */}
           <div className="flex items-center gap-4">
             {/* Search */}
             <button
               onClick={() => setIsDialogOpen(true)}
               className="hidden sm:block relative w-64 px-4 py-2 pl-10 rounded-xl glass-button text-sm hover:ring-primary/50 transition-all text-left text-muted-foreground"
+              aria-label="Search components"
             >
               Search components...
               <svg
@@ -73,6 +80,7 @@ export default function Header() {
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
+                aria-hidden="true"
               >
                 <path
                   strokeLinecap="round"
@@ -89,8 +97,11 @@ export default function Header() {
               className="p-2 rounded-xl glass-button"
               aria-label="Toggle theme"
             >
-              {renderTheme === 'light' ? (
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {!isClient ? (
+                // Placeholder during SSR to prevent hydration mismatch
+                <div className="w-5 h-5" />
+              ) : theme === 'light' ? (
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -99,7 +110,7 @@ export default function Header() {
                   />
                 </svg>
               ) : (
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -111,34 +122,35 @@ export default function Header() {
             </button>
 
             {/* GitHub Link */}
-            <a
+            <Link
               href="https://github.com/rayasabari/joko-ui"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 rounded-xl glass-button hidden sm:block"
-              aria-label="GitHub"
+              aria-label="View on GitHub"
             >
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path
                   fillRule="evenodd"
                   d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
                   clipRule="evenodd"
                 />
               </svg>
-            </a>
+            </Link>
 
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="p-2 rounded-xl glass-button md:hidden"
-              aria-label="Toggle menu"
+              aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={isMenuOpen}
             >
               {isMenuOpen ? (
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               ) : (
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
               )}
@@ -153,33 +165,27 @@ export default function Header() {
               <Link
                 href="/components/application"
                 className={`px-4 py-2 rounded-xl hover:bg-secondary transition-colors font-medium ${
-                  isActive('/components/application')
-                    ? 'bg-secondary' : ''
+                  isClient && isActive('/components/application') ? 'bg-secondary' : ''
                 }`}
                 onClick={() => setIsMenuOpen(false)}
-                prefetch={false}
               >
                 Application Components
               </Link>
               <Link
                 href="/components/marketing"
                 className={`px-4 py-2 rounded-xl hover:bg-secondary transition-colors font-medium ${
-                  isActive('/components/marketing')
-                    ? 'bg-secondary' : ''
+                  isClient && isActive('/components/marketing') ? 'bg-secondary' : ''
                 }`}
                 onClick={() => setIsMenuOpen(false)}
-                prefetch={false}
               >
                 Marketing Components
               </Link>
             </nav>
             {/* Mobile Search */}
             <button
-              onClick={() => {
-                setIsDialogOpen(true);
-                setIsMenuOpen(false);
-              }}
+              onClick={handleSearchOpen}
               className="mt-4 mx-4 w-[calc(100%-2rem)] px-4 py-2 rounded-xl glass-button text-sm hover:ring-2 hover:ring-primary/50 transition-all text-left text-muted-foreground"
+              aria-label="Search components"
             >
               Search components...
             </button>
@@ -188,10 +194,7 @@ export default function Header() {
       </div>
 
       {/* Component Search Dialog */}
-      <SearchDialog
-        isOpen={isDialogOpen}
-        onClose={() => setIsDialogOpen(false)}
-      />
+      <SearchDialog isOpen={isDialogOpen} onClose={() => setIsDialogOpen(false)} />
     </header>
   );
 }

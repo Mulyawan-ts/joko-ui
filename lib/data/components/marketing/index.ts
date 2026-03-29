@@ -10,6 +10,7 @@ import { teams } from './teams';
 import { banners } from './banners';
 import { headers } from './headers';
 import { description_list } from './description-list';
+import { brand_list } from './brand-list';
 
 export const marketingComponents: ComponentType[] = [
   headers,
@@ -23,4 +24,5 @@ export const marketingComponents: ComponentType[] = [
   testimonials,
   faq,
   footers,
+  brand_list
 ];
